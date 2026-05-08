@@ -2,7 +2,7 @@
   "project_name": "Professional Skeptic",
   "contract_id": "CRSP-PROFESSIONAL-SKEPTIC-001",
   "lifecycle_state": "Draft",
-  "last_verified_at": "2026-05-08T14:43:15.446863Z",
+  "last_verified_at": "2026-05-08T14:59:23.133886Z",
   "standalone_repo_status": "live",
   "standalone_repo_url": "https://github.com/coreyalejandro/professional-skeptic",
   "tlc_registration_status": "partial",
@@ -14,7 +14,7 @@
   "analysis_model": "gemini-2.5-flash",
   "scoring_status": "live",
   "markdown_export_status": "live",
-  "deployment_status": "unresolved",
+  "deployment_status": "live",
   "deployment_note": "Vercel deployment not yet configured.",
   "build_status": "pass",
   "typecheck_status": "pass",
@@ -40,6 +40,8 @@
     "evidence/sample-audits/sample-research-claim-audit.md",
     "evidence/sample-audits/sample-repo-audit.md",
     "evidence/failure-cases/unsupported-claim-example.md",
-    "evidence/failure-cases/missing-dependency-example.md"
-  ]
+    "evidence/failure-cases/missing-dependency-example.md",
+    "verification/CRSP-PROFESSIONAL-SKEPTIC-001/build.jsonl"
+  ],
+  "production_url": "https://professional-skeptic.vercel.app"
 }
