@@ -1,7 +1,7 @@
 {
   "contract_id": "CRSP-PROFESSIONAL-SKEPTIC-001",
   "schema_version": "4.0",
-  "status": "Draft",
+  "status": "Active",
   "basename": "CRSP-PROFESSIONAL-SKEPTIC-001",
   "authority_files": {
     "constitution": "THE_LIVING_CONSTITUTION.md",
@@ -48,9 +48,9 @@
     ]
   },
   "baseline": {
-    "commit": "47c5bc3d4bf76b82004b4b175f5c74cd6464f977",
+    "commit": "237a1671bfff6a9e0d173733e6195f12ce4ac1cf",
     "dirty_worktree_allowed": false,
-    "baseline_state": "Draft contract exists; product repo scaffold written; initial commit pending."
+    "baseline_state": "Active: standalone product repo deployed, TLC registered, lifecycle transitioned."
   },
   "unresolved_field_ledger": [
     {

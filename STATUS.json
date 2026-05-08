@@ -1,8 +1,8 @@
 {
   "project_name": "Professional Skeptic",
   "contract_id": "CRSP-PROFESSIONAL-SKEPTIC-001",
-  "lifecycle_state": "Draft",
-  "last_verified_at": "2026-05-08T14:59:23.133886Z",
+  "lifecycle_state": "Active",
+  "last_verified_at": "2026-05-08T14:59:53.288024Z",
   "standalone_repo_status": "live",
   "standalone_repo_url": "https://github.com/coreyalejandro/professional-skeptic",
   "tlc_registration_status": "partial",
@@ -43,5 +43,7 @@
     "evidence/failure-cases/missing-dependency-example.md",
     "verification/CRSP-PROFESSIONAL-SKEPTIC-001/build.jsonl"
   ],
-  "production_url": "https://professional-skeptic.vercel.app"
+  "production_url": "https://professional-skeptic.vercel.app",
+  "baseline_commit": "237a1671bfff6a9e0d173733e6195f12ce4ac1cf",
+  "tlc_pr_merged": "https://github.com/coreyalejandro/the-living-constitution/pull/53"
 }
