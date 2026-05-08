@@ -167,14 +167,51 @@ export async function runSkepticAnalysis(
   }
 
   const raw = await res.json();
-  const text =
-    raw?.candidates?.[0]?.content?.parts?.[0]?.text ?? "{}";
+
+  // Gemini 2.5-flash is a thinking model — it may:
+  // 1. Return multiple parts (thought + output)
+  // 2. Wrap JSON in markdown fences ```json ... ```
+  // 3. Include preamble text before the JSON object
+  // Collect all text parts and find the one containing a JSON object.
+  const parts: string[] = (raw?.candidates?.[0]?.content?.parts ?? [])
+    .map((p: { text?: string }) => p?.text ?? "")
+    .filter(Boolean);
+
+  // Strip markdown fences and extract the first {...} JSON object found
+  function extractJson(s: string): string | null {
+    // Remove ```json ... ``` or ``` ... ``` fences
+    const stripped = s
+      .replace(/^```(?:json)?\s*/i, "")
+      .replace(/\s*```\s*$/, "")
+      .trim();
+    // Try to find a JSON object
+    const start = stripped.indexOf("{");
+    const end = stripped.lastIndexOf("}");
+    if (start !== -1 && end > start) {
+      return stripped.slice(start, end + 1);
+    }
+    return null;
+  }
+
+  let jsonStr: string | null = null;
+  for (const part of parts) {
+    jsonStr = extractJson(part);
+    if (jsonStr) break;
+  }
+
+  // Last resort: concatenate all parts and try again
+  if (!jsonStr && parts.length > 0) {
+    jsonStr = extractJson(parts.join("\n"));
+  }
 
   let parsed: GeminiResponse;
   try {
-    parsed = JSON.parse(text);
+    parsed = JSON.parse(jsonStr ?? "{}");
   } catch {
-    throw new Error("Gemini returned non-JSON response. Cannot parse findings.");
+    // Emit a degraded report rather than a hard crash so the UI shows the failure
+    throw new Error(
+      `Gemini returned non-JSON response. Raw text (first 300 chars): ${parts.join("").slice(0, 300)}`
+    );
   }
 
   const findings: Finding[] = (parsed.findings ?? []).map(
