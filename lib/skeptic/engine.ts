@@ -18,7 +18,7 @@ import type { GitHubRepoMeta } from "@/lib/ingestion/github";
 import { generateMarkdownExport } from "@/lib/export/markdown";
 
 const GEMINI_API_URL =
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent";
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
 interface GeminiFinding {
   id: string;

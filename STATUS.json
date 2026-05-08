@@ -2,32 +2,44 @@
   "project_name": "Professional Skeptic",
   "contract_id": "CRSP-PROFESSIONAL-SKEPTIC-001",
   "lifecycle_state": "Draft",
-  "standalone_repo_status": "partial",
+  "last_verified_at": "2026-05-08T14:43:15.446863Z",
+  "standalone_repo_status": "live",
+  "standalone_repo_url": "https://github.com/coreyalejandro/professional-skeptic",
   "tlc_registration_status": "partial",
+  "tlc_registration_note": "PR #53 open at https://github.com/coreyalejandro/the-living-constitution/pull/53 \u2014 not yet merged",
   "github_ingestion_status": "partial",
+  "github_ingestion_note": "Fetches repo metadata + README via GitHub public REST API. Full source tree ingestion not implemented.",
   "text_ingestion_status": "live",
   "analysis_status": "live",
+  "analysis_model": "gemini-2.5-flash",
   "scoring_status": "live",
   "markdown_export_status": "live",
   "deployment_status": "unresolved",
+  "deployment_note": "Vercel deployment not yet configured.",
+  "build_status": "pass",
+  "typecheck_status": "pass",
+  "lint_status": "pass",
+  "smoke_test_pasted_text": "pass",
+  "smoke_test_github_ingestion": "pass",
   "known_unknowns": [
-    "Deployment to Vercel production not yet verified",
-    "TLC registration commit hash pending",
-    "GitHub ingestion covers metadata + README only \u2014 source files not fetched",
-    "GEMINI_API_KEY must be set in environment for analysis to function",
-    "GitHub token is optional but recommended to avoid rate limiting"
+    "Vercel production URL not yet assigned",
+    "GitHub source tree ingestion not implemented (OP-04 partial)",
+    "TLC PR #53 not merged \u2014 TLC registration pending",
+    "No authentication \u2014 public repos only"
   ],
   "unresolved_required_inputs": [
-    "Vercel deployment confirmation",
-    "TLC registration commit hash pending",
-    "verifier_modules[*].sha256 \u2014 computed at runtime"
+    "Vercel deployment target URL",
+    "TLC PR merge confirmation"
   ],
-  "last_verified_at": "2026-05-08T09:00:00Z",
   "verification_evidence_paths": [
     "verification/CRSP-PROFESSIONAL-SKEPTIC-001/build.jsonl",
     "verification/CRSP-PROFESSIONAL-SKEPTIC-001/typecheck.jsonl",
     "verification/CRSP-PROFESSIONAL-SKEPTIC-001/lint.jsonl",
     "verification/CRSP-PROFESSIONAL-SKEPTIC-001/manual-tests.jsonl",
-    "verification/CRSP-PROFESSIONAL-SKEPTIC-001/lifecycle.jsonl"
+    "verification/CRSP-PROFESSIONAL-SKEPTIC-001/lifecycle.jsonl",
+    "evidence/sample-audits/sample-research-claim-audit.md",
+    "evidence/sample-audits/sample-repo-audit.md",
+    "evidence/failure-cases/unsupported-claim-example.md",
+    "evidence/failure-cases/missing-dependency-example.md"
   ]
 }

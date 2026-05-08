@@ -1,0 +1,2 @@
+{"event": "lint_setup", "timestamp": "2026-05-08T14:42:30.520198Z", "note": "npm run lint script was missing from scaffold. Added eslint + typescript-eslint flat config. eslint.config.mjs created.", "fix": "installed typescript-eslint, updated package.json scripts.lint"}
+{"event": "lint", "timestamp": "2026-05-08T14:42:30.520198Z", "command": "npm run lint", "exit_code": 0, "result": "pass", "output_summary": "> professional-skeptic@0.1.0 lint\n> eslint . --max-warnings 30"}
