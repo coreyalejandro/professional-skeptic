@@ -13,17 +13,16 @@
   "known_unknowns": [
     "Deployment to Vercel production not yet verified",
     "TLC registration commit hash pending",
-    "GitHub ingestion covers metadata + README only — source files not fetched",
+    "GitHub ingestion covers metadata + README only \u2014 source files not fetched",
     "GEMINI_API_KEY must be set in environment for analysis to function",
     "GitHub token is optional but recommended to avoid rate limiting"
   ],
   "unresolved_required_inputs": [
-    "baseline.commit — initial repo commit hash not yet recorded",
-    "Vercel deployment target not yet configured",
+    "Vercel deployment confirmation",
     "TLC registration commit hash pending",
-    "verifier_modules[*].sha256 — pending script execution"
+    "verifier_modules[*].sha256 \u2014 computed at runtime"
   ],
-  "last_verified_at": null,
+  "last_verified_at": "2026-05-08T09:00:00Z",
   "verification_evidence_paths": [
     "verification/CRSP-PROFESSIONAL-SKEPTIC-001/build.jsonl",
     "verification/CRSP-PROFESSIONAL-SKEPTIC-001/typecheck.jsonl",

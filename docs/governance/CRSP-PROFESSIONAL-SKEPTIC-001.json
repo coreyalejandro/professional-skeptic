@@ -48,7 +48,7 @@
     ]
   },
   "baseline": {
-    "commit": "UNRESOLVED REQUIRED INPUT \u2014 pending initial commit",
+    "commit": "47c5bc3d4bf76b82004b4b175f5c74cd6464f977",
     "dirty_worktree_allowed": false,
     "baseline_state": "Draft contract exists; product repo scaffold written; initial commit pending."
   },
