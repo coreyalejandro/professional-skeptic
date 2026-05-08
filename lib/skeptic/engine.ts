@@ -14,7 +14,7 @@ import type {
   Scores,
   FunctionalStatus,
 } from "@/types";
-import type { GitHubRepoMeta } from "@/lib/ingestion/github";
+import type { GitHubRepoMeta, FetchedFile } from "@/lib/ingestion/github";
 import { generateMarkdownExport } from "@/lib/export/markdown";
 
 const GEMINI_API_URL =
@@ -271,7 +271,9 @@ export async function runSkepticAnalysis(
 
 export function buildContentString(
   githubMeta: GitHubRepoMeta | null,
-  pastedText: string | null
+  pastedText: string | null,
+  fileTree?: string[],
+  fetchedFiles?: FetchedFile[]
 ): string {
   const parts: string[] = [];
 
@@ -286,9 +288,35 @@ export function buildContentString(
     parts.push(`Last push: ${githubMeta.pushed_at}`);
     if (githubMeta.readme_content) {
       parts.push("\n## README Content\n");
-      parts.push(githubMeta.readme_content.slice(0, 6000));
+      parts.push(githubMeta.readme_content.slice(0, 4000));
     } else {
       parts.push("\n## README\nMISSING — no README found in repository.");
+    }
+
+    if (fileTree && fileTree.length > 0) {
+      parts.push("\n## Repository File Tree\n");
+      parts.push(fileTree.slice(0, 300).join("\n"));
+      if (fileTree.length > 300) {
+        parts.push(`\n[...${fileTree.length - 300} more paths not shown]`);
+      }
+    } else {
+      parts.push("\n## Repository File Tree\nUNAVAILABLE — could not fetch file tree.");
+    }
+
+    if (fetchedFiles && fetchedFiles.length > 0) {
+      parts.push("\n## Source File Contents (sampled)\n");
+      let remaining = 6000; // token budget for source files
+      for (const f of fetchedFiles) {
+        if (remaining <= 0) {
+          parts.push(`\n[Remaining ${fetchedFiles.length} file(s) omitted — token budget reached]`);
+          break;
+        }
+        const snippet = f.content.slice(0, Math.min(remaining, 1500));
+        remaining -= snippet.length;
+        parts.push(`\n### ${f.path}${f.truncated ? " [TRUNCATED]" : ""}\n\`\`\`\n${snippet}\n\`\`\``);
+      }
+    } else {
+      parts.push("\n## Source File Contents\nNot fetched — source content unavailable for analysis.");
     }
   }
 

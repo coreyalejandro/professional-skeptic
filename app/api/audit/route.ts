@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     let ingestionStatus;
 
     if (validation.input_type === "github_url") {
-      // OP-04: GitHub ingestion
+      // OP-04: GitHub ingestion (extended: metadata + README + file tree + sampled source files)
       const github = await ingestGitHubRepo(body.github_url!);
       if (github.status.coverage === "failed") {
         return NextResponse.json(
@@ -45,7 +45,12 @@ export async function POST(req: NextRequest) {
           { status: 422 }
         );
       }
-      content = buildContentString(github.meta, null);
+      content = buildContentString(
+        github.meta,
+        null,
+        github.file_tree,
+        github.fetched_files
+      );
       ingestionStatus = github.status;
     } else {
       // OP-04: Text ingestion
