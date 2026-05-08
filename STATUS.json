@@ -1,0 +1,34 @@
+{
+  "project_name": "Professional Skeptic",
+  "contract_id": "CRSP-PROFESSIONAL-SKEPTIC-001",
+  "lifecycle_state": "Draft",
+  "standalone_repo_status": "partial",
+  "tlc_registration_status": "partial",
+  "github_ingestion_status": "partial",
+  "text_ingestion_status": "live",
+  "analysis_status": "live",
+  "scoring_status": "live",
+  "markdown_export_status": "live",
+  "deployment_status": "unresolved",
+  "known_unknowns": [
+    "Deployment to Vercel production not yet verified",
+    "TLC registration commit hash pending",
+    "GitHub ingestion covers metadata + README only — source files not fetched",
+    "GEMINI_API_KEY must be set in environment for analysis to function",
+    "GitHub token is optional but recommended to avoid rate limiting"
+  ],
+  "unresolved_required_inputs": [
+    "baseline.commit — initial repo commit hash not yet recorded",
+    "Vercel deployment target not yet configured",
+    "TLC registration commit hash pending",
+    "verifier_modules[*].sha256 — pending script execution"
+  ],
+  "last_verified_at": null,
+  "verification_evidence_paths": [
+    "verification/CRSP-PROFESSIONAL-SKEPTIC-001/build.jsonl",
+    "verification/CRSP-PROFESSIONAL-SKEPTIC-001/typecheck.jsonl",
+    "verification/CRSP-PROFESSIONAL-SKEPTIC-001/lint.jsonl",
+    "verification/CRSP-PROFESSIONAL-SKEPTIC-001/manual-tests.jsonl",
+    "verification/CRSP-PROFESSIONAL-SKEPTIC-001/lifecycle.jsonl"
+  ]
+}

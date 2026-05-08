@@ -1,0 +1,67 @@
+{
+  "contract_id": "CRSP-PROFESSIONAL-SKEPTIC-001",
+  "schema_version": "4.0",
+  "status": "Draft",
+  "basename": "CRSP-PROFESSIONAL-SKEPTIC-001",
+  "authority_files": {
+    "constitution": "THE_LIVING_CONSTITUTION.md",
+    "claude": "CLAUDE.md",
+    "inventory": "MASTER_PROJECT_INVENTORY.json"
+  },
+  "objective": {
+    "title": "Professional Skeptic",
+    "summary": "Build Professional Skeptic as a standalone public product repository registered inside The Living Constitution as a governed project.",
+    "primary_objective": "Create a C-RSP-governed failure-detection agent that audits AI repositories, research claims, and build plans by identifying unsupported claims, missing evidence, build-readiness failures, technical debt risks, evaluation gaps, safety/governance risks, and unresolved required inputs.",
+    "governance_objective": "Use TLC as the constitutional authority layer, C-RSP as the binding build contract, and the standalone product repository as the reviewable product surface.",
+    "user_value": "Provide an evidence-grounded professional skeptic that makes AI-assisted research and engineering more contestable, auditable, and resistant to unsupported optimism."
+  },
+  "repo_system": {
+    "system_name": "Professional Skeptic",
+    "standalone_public_product_repo": "github.com/coreyalejandro/professional-skeptic",
+    "tlc_governed_project_path": "projects/professional-skeptic",
+    "tlc_authority_repo": "github.com/coreyalejandro/the-living-constitution",
+    "contract_path_standalone": "docs/governance/CRSP-PROFESSIONAL-SKEPTIC-001.json",
+    "contract_path_tlc": "projects/professional-skeptic/BUILD_CONTRACT.json",
+    "markdown_path_standalone": "docs/governance/CRSP-PROFESSIONAL-SKEPTIC-001.md",
+    "markdown_path_tlc": "projects/professional-skeptic/BUILD_CONTRACT.md",
+    "truth_surface_path_standalone": "STATUS.json",
+    "truth_surface_path_tlc": "projects/professional-skeptic/STATUS.json"
+  },
+  "dependencies": {
+    "runtime": [
+      "Next.js App Router",
+      "TypeScript",
+      "React",
+      "ShadCN UI",
+      "Tailwind CSS",
+      "Node.js",
+      "npm"
+    ],
+    "external_services": [
+      "LLM provider: Google Gemini (gemini-2.0-flash-001)",
+      "GitHub public repository access via GitHub REST API",
+      "Deployment provider: Vercel"
+    ],
+    "environment_variables": [
+      "GEMINI_API_KEY \u2014 required \u2014 Gemini API key",
+      "GITHUB_TOKEN \u2014 optional \u2014 GitHub token for higher rate limits on public repos"
+    ]
+  },
+  "baseline": {
+    "commit": "UNRESOLVED REQUIRED INPUT \u2014 pending initial commit",
+    "dirty_worktree_allowed": false,
+    "baseline_state": "Draft contract exists; product repo scaffold written; initial commit pending."
+  },
+  "unresolved_field_ledger": [
+    {
+      "field": "baseline.commit",
+      "value": "UNRESOLVED REQUIRED INPUT",
+      "reason": "Initial standalone product repo commit hash not yet recorded."
+    },
+    {
+      "field": "verifier_modules[0].sha256",
+      "value": "UNRESOLVED REQUIRED INPUT",
+      "reason": "Computed at runtime after script exists."
+    }
+  ]
+}
