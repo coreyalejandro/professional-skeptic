@@ -65,7 +65,7 @@ INGESTION NOTES: ${ingestionStatus.notes}
 
 CONTENT TO AUDIT:
 ---
-${content.slice(0, 12000)}
+${content.slice(0, 8000)}
 ---
 
 You MUST identify:
@@ -88,6 +88,8 @@ RULES:
 - evidence_truth_category: verified_fact | inferred_risk | unsupported_claim | missing_evidence | unresolved_required_input
 - Scores 0–100. governance_risk: higher = more risk (not lower). Scores MUST degrade when evidence is missing.
 - NEVER present scores as formal certification
+
+HARD LIMIT: Return AT MOST 12 findings total. Prioritize the highest-severity issues. Do not pad with low-severity findings to reach a number. Concise is correct — truncation is not.
 
 Respond with a single JSON object matching this schema exactly:
 {
@@ -157,14 +159,13 @@ export async function runSkepticAnalysis(
       generationConfig: {
         responseMimeType: "application/json",
         temperature: 0.2,
-        // 8192 is too small for large repos — thinking tokens eat into the budget
-        // before JSON output, truncating mid-object. 32768 gives enough headroom.
+        // Raise ceiling — thinking model eats tokens before output starts
         maxOutputTokens: 32768,
-      },
-      // Limit thinking budget so tokens go to output, not internal reasoning.
-      // gemini-2.5-flash accepts thinkingConfig; 1024 is enough for this task.
-      thinkingConfig: {
-        thinkingBudget: 1024,
+        // thinkingConfig MUST be inside generationConfig for gemini-2.5-flash
+        // (not a top-level sibling). This actually caps thinking tokens.
+        thinkingConfig: {
+          thinkingBudget: 512,
+        },
       },
     }),
   });
