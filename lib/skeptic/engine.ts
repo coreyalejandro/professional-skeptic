@@ -157,7 +157,14 @@ export async function runSkepticAnalysis(
       generationConfig: {
         responseMimeType: "application/json",
         temperature: 0.2,
-        maxOutputTokens: 8192,
+        // 8192 is too small for large repos — thinking tokens eat into the budget
+        // before JSON output, truncating mid-object. 32768 gives enough headroom.
+        maxOutputTokens: 32768,
+      },
+      // Limit thinking budget so tokens go to output, not internal reasoning.
+      // gemini-2.5-flash accepts thinkingConfig; 1024 is enough for this task.
+      thinkingConfig: {
+        thinkingBudget: 1024,
       },
     }),
   });
